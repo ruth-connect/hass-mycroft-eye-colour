@@ -156,7 +156,7 @@ class MycroftInstance(LightEntity):
             self._rgb = color_util.color_hs_to_RGB(*kwargs[ATTR_HS_COLOR])
 
         if self._mycroft is not None:
-            self._mycroft.eyes_color(*self._rgb)
+            self._mycroft.eyes_color(*scale_rgb_to_brightness(self._rgb, self._brightness))
 
         self.async_schedule_update_ha_state()
         
@@ -166,7 +166,7 @@ class MycroftInstance(LightEntity):
     def async_turn_off(self, **kwargs):
         """Instruct the light to turn off."""
         self._state = STATE_OFF
-        if self_.mycroft is not None:
+        if self._mycroft is not None:
             self._mycroft.eyes_color(0, 0, 0)
         self.async_schedule_update_ha_state()
         _LOGGER.debug(f"Turned off Mycroft {self._name}")
