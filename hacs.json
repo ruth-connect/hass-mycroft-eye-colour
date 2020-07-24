@@ -1,0 +1,5 @@
+{
+  "name": "Mycroft Eye Colour",
+  "domains": ["light"],
+  "render_readme": true
+}
