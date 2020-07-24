@@ -67,8 +67,8 @@ class MycroftInstance(LightEntity):
 
         self._name = light.get(CONF_NAME)
         
-        self._brightness = light.get(CONF_DEFAULT_LEVEL)
-        self._rgb = light.get(CONF_DEFAULT_COLOR, COLOR_MAP.get(self._type))
+        self._brightness = light.get(CONF_DEFAULT_LEVEL, 0)
+        self._rgb = light.get(CONF_DEFAULT_COLOR, COLOR_MAP)
 
         # Brightness needs to be set to the maximum default RGB level, then
         # scale up the RGB values to what HA uses
