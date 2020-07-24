@@ -173,6 +173,8 @@ class MycroftInstance(LightEntity):
             self._mycroft.eyes_color(*self._rgb)
 
         self.async_schedule_update_ha_state()
+        
+        _LOGGER.debug(f"Turned on Mycroft {self._name}")
 
     @asyncio.coroutine
     def async_turn_off(self, **kwargs):
@@ -181,6 +183,7 @@ class MycroftInstance(LightEntity):
         if self_.mycroft is not None:
             self._mycroft.eyes_color(0, 0, 0)
         self.async_schedule_update_ha_state()
+        _LOGGER.debug(f"Turned off Mycroft {self._name}")
 
     def update(self):
         """Fetch update state."""
