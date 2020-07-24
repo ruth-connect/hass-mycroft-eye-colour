@@ -63,7 +63,7 @@ class MycroftInstance(LightEntity):
     def __init__(self, light):
 
         # Fixture configuration
-        self._host = config.get(CONF_HOST)
+        self._host = light.get(CONF_HOST)
 
         self._name = light.get(CONF_NAME)
         
