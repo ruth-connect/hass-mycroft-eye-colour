@@ -1,0 +1,7 @@
+{
+  "domain": "mycroft_eye_colour",
+  "name": "Mycroft Eye Colour",
+  "documentation": "https://github.com/ruth-connect/hass-mycroft-eye-colour",
+  "requirements": ["mycroftapi==2.0"],
+  "codeowners": []
+}
