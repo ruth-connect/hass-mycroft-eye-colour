@@ -67,8 +67,7 @@ class MycroftInstance(LightEntity):
 
         self._name = light.get(CONF_NAME)
         
-        self._brightness = light.get(CONF_DEFAULT_LEVEL,
-                                     dmx_gateway.default_level)
+        self._brightness = light.get(CONF_DEFAULT_LEVEL)
         self._rgb = light.get(CONF_DEFAULT_COLOR, COLOR_MAP.get(self._type))
 
         # Brightness needs to be set to the maximum default RGB level, then
