@@ -60,7 +60,7 @@ def async_setup_platform(hass, config, async_add_devices, discovery_info=None):
 class MycroftInstance(LightEntity):
     """Representation of a Mycrof instance."""
 
-    def __init__(self, light, send_immediately):
+    def __init__(self, light):
 
         # Fixture configuration
         self._host = config.get(CONF_HOST)
