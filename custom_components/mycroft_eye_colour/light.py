@@ -28,7 +28,6 @@ _LOGGER = logging.getLogger(__name__)
 CONF_DEFAULT_COLOR = 'default_rgb'
 CONF_DEFAULT_LEVEL = 'default_level'
 CONF_DEFAULT_TYPE = 'default_type'
-CONF_SEND_LEVELS_ON_STARTUP = 'send_levels_on_startup'
 
 # Default color if not specified in configuration
 COLOR_MAP = [255, 255, 255]
@@ -45,18 +44,13 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
                 vol.Coerce(tuple)),
         }
     ]),
-    vol.Optional(CONF_SEND_LEVELS_ON_STARTUP, default=True): cv.boolean,
 })
 
 
 @asyncio.coroutine
 def async_setup_platform(hass, config, async_add_devices, discovery_info=None):
-    send_levels_on_startup = config.get(CONF_SEND_LEVELS_ON_STARTUP)
 
-    # Send the specified default level to pre-fill the channels with
-    overall_default_level = config.get(CONF_DEFAULT_LEVEL)
-
-    lights = (MycroftInstance(light, send_levels_on_startup) for light in
+    lights = (MycroftInstance(light) for light in
               config[CONF_DEVICES])
     async_add_devices(lights)
 
@@ -89,10 +83,6 @@ class MycroftInstance(LightEntity):
         # Create Mycroft API.
         self._mycroft = MycroftAPI(self._host)
         
-        # TODO - Send default levels to the Mycroft.
-        if self_.mycroft is not None:
-            self._mycroft.eyes_color(*self._rgb)
-
         _LOGGER.debug(f"Intialized Mycroft {self._name}")
         
     @property
