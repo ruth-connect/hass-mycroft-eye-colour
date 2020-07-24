@@ -155,7 +155,7 @@ class MycroftInstance(LightEntity):
         if ATTR_HS_COLOR in kwargs:
             self._rgb = color_util.color_hs_to_RGB(*kwargs[ATTR_HS_COLOR])
 
-        if self_.mycroft is not None:
+        if self._mycroft is not None:
             self._mycroft.eyes_color(*self._rgb)
 
         self.async_schedule_update_ha_state()
