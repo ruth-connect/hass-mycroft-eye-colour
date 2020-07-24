@@ -56,10 +56,7 @@ def async_setup_platform(hass, config, async_add_devices, discovery_info=None):
     # Send the specified default level to pre-fill the channels with
     overall_default_level = config.get(CONF_DEFAULT_LEVEL)
 
-    dmx_gateway = DMXGateway(host, universe, port, overall_default_level,
-                             config[CONF_DMX_CHANNELS])
-
-    lights = (DMXLight(light, dmx_gateway, send_levels_on_startup, default_light_type) for light in
+    lights = (MycroftInstance(light, send_levels_on_startup) for light in
               config[CONF_DEVICES])
     async_add_devices(lights)
 
