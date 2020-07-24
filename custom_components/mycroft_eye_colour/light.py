@@ -134,7 +134,7 @@ class MycroftInstance(LightEntity):
     @property
     def supported_features(self):
         """Flag supported features."""
-        return self._features
+        return (SUPPORT_BRIGHTNESS | SUPPORT_COLOR)
 
     @property
     def should_poll(self):
