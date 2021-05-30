@@ -1,6 +1,5 @@
 {
   "name": "Mycroft Eye Colour",
   "domains": ["light"],
-  "render_readme": true,
-  "version": "0.1"
+  "render_readme": true
 }
