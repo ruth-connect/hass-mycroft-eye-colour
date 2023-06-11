@@ -4,5 +4,5 @@
   "documentation": "https://github.com/ruth-connect/hass-mycroft-eye-colour",
   "requirements": ["mycroftapi==2.0"],
   "codeowners": [],
-  "version": "0.1"
+  "version": "0.2"
 }

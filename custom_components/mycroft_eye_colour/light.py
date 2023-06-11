@@ -47,8 +47,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
 })
 
 
-@asyncio.coroutine
-def async_setup_platform(hass, config, async_add_devices, discovery_info=None):
+async def async_setup_platform(hass, config, async_add_devices, discovery_info=None):
 
     lights = (MycroftInstance(light) for light in
               config[CONF_DEVICES])
@@ -140,8 +139,7 @@ class MycroftInstance(LightEntity):
     def should_poll(self):
         return False
 
-    @asyncio.coroutine
-    def async_turn_on(self, **kwargs):
+    async def async_turn_on(self, **kwargs):
         """Instruct the light to turn on."""
         self._state = STATE_ON
 
@@ -162,8 +160,7 @@ class MycroftInstance(LightEntity):
         
         _LOGGER.debug(f"Turned on Mycroft {self._name}")
 
-    @asyncio.coroutine
-    def async_turn_off(self, **kwargs):
+    async def async_turn_off(self, **kwargs):
         """Instruct the light to turn off."""
         self._state = STATE_OFF
         if self._mycroft is not None:
